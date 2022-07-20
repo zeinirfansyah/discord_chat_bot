@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Bukan NGL</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <style>
+
+        body {
+            background-image: linear-gradient(to right, #3b00688f , #9f5cd9);
+        }
+        
+
+        .form_back {
+            background-color:  #fff;
+            border-radius: 25px;
+            box-shadow: 5px 7px #3b00688f;
+        }
+
+        .form-text {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        #pertanyaan {
+            font-size: 14px;
+        }
+
+        .btn-tambah {
+            background-color: #9f5cd9;
+            border-radius: 25px;
+            color: white;
+        }
+
+        .formtext {
+            font-size: 16px
+        }
+
+        textarea {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="mt-5">
+        <h1>
+            <center>
+                <font color="white">
+                    <b>
+                        Ini Bukan NGL
+                    </b>
+                </font>
+            </center>
+        </h1>
+    </div>
+    <div class="m-5">
+        <div class="pt-4 pb-4 px-3 form_back">            
+            <textarea rows="3" cols="50" type="text" class="form-control formtext" placeholder="Sampaikan pada Zein" id="isi_pesan"></textarea>
+
+            <div class="form-text mt-3">
+                Jangan khawatir pesan yang kamu kirim 100% bersifat anonim.
+            </div>
+
+            <button type="submit" class="btn btn-tambah mt-3 w-100" onclick="KirimPesan()">
+                Kirim
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // ini adalah fungsi js untuk ngirim data ke discord
+    function KirimPesan() {
+        const request = new XMLHttpRequest;
+
+        request.open("POST", "Masukin URL WEBHOOK nya disini"); // Ambil URL Webhooknya dari server discord kamu
+
+        request.setRequestHeader('Content-type', 'application/json');
+
+        var pesan = {
+            content: ("\n------------------------------------------\n" + document.getElementById("isi_pesan").value + "\n------------------------------------------ ")
+        }
+
+        request.send(JSON.stringify(pesan));
+
+        document.getElementById("isi_pesan").value = "";
+
+        alert("Pesan berhasil dikirim");
+    }
+
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
